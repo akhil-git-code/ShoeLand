@@ -196,7 +196,7 @@ const MyProfile = ({navigation}) => {
     require('../Assets/myprofileicon.png'),
   );
   const [isEditable, setIsEditable] = useState(false); // Initially set to false (non-editable)
-
+console.log("helo")
   // Function to handle profile image update
   const handleEditImage = () => {
     ImagePicker.launchImageLibrary(
