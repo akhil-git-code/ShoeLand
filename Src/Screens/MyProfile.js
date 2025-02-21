@@ -237,7 +237,7 @@ const MyProfile = ({navigation}) => {
       await AsyncStorage.removeItem('userToken');
       
       // Redirect to login screen
-      navigation.replace('LoginScreen');
+      navigation.replace('SignIn');
     } catch (error) {
       Alert.alert('Sign Out Error', 'Failed to sign out. Please try again.');
     }
@@ -280,7 +280,7 @@ const MyProfile = ({navigation}) => {
         <Text style={styles.label}>Email Address</Text>
         <CustomInput
           placeholder="Enter Email"
-          keyboardType="email-address"
+          // keyboardType="email-address"
           value={email}
           setValue={setEmail}
           disabled={!isEditable} // If isEditable is false, input will be disabled

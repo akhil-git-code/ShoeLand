@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -7,8 +7,10 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+import {ProductContext} from '../../App';
 
 const AddToCart = ({navigation}) => {
+  const {products} = useContext(ProductContext);
   const cartItems = []; // Empty for now, can be populated later
 
   const renderEmptyCart = () => (
@@ -34,9 +36,9 @@ const AddToCart = ({navigation}) => {
         <FlatList
           data={cartItems}
           keyExtractor={(_, index) => index.toString()}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <View style={styles.cartItem}>
-              <Image source={{ uri: item.image }} style={styles.productImage} />
+              <Image source={{uri: item.image}} style={styles.productImage} />
               <Text style={styles.productName}>{item.name}</Text>
             </View>
           )}
@@ -55,7 +57,7 @@ const AddToCart = ({navigation}) => {
         </View>
         <View style={styles.summaryRow}>
           <Text style={[styles.summaryText, styles.totalText]}>Total Cost</Text>
-          <Text style={[styles.summaryText, styles.totalText]}>$0.00</Text>
+          <Text style={[styles.summaryText, styles.totalText]}>{products}</Text>
         </View>
         <TouchableOpacity style={styles.checkoutButton}>
           <Text style={styles.checkoutButtonText}>Checkout</Text>
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
+    shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,

@@ -11,7 +11,7 @@ const SideMenu = ({navigation}) => {
       await AsyncStorage.removeItem('userToken');
       
       // Redirect to login screen
-      navigation.replace('LoginScreen');
+      navigation.replace('SignIn');
     } catch (error) {
       Alert.alert('Sign Out Error', 'Failed to sign out. Please try again.');
     }
