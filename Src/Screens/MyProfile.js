@@ -196,8 +196,8 @@ const MyProfile = ({navigation}) => {
     require('../Assets/myprofileicon.png'),
   );
   const [isEditable, setIsEditable] = useState(false); // Initially set to false (non-editable)
-console.log("helo")
-  // Function to handle profile image update
+
+  // Function that handle profile image update
   const handleEditImage = () => {
     ImagePicker.launchImageLibrary(
       {mediaType: 'photo', quality: 0.8},
@@ -209,7 +209,7 @@ console.log("helo")
     );
   };
 
-  // Function to save profile changes
+  // Function for save profile changes
   const handleSave = () => {
     if (!email.includes('@') || !email.includes('.')) {
       Alert.alert('Invalid Email', 'Please enter a valid email address.');
@@ -230,18 +230,18 @@ console.log("helo")
     setIsEditable(true); // Enable editing when edit icon is clicked
   };
 
- // Sign out functionality
-  const handleSignOut = async () => {
-    try {
-      // Clear stored user session
-      await AsyncStorage.removeItem('userToken');
+//  // Signout functionality
+//   const handleSignOut = async () => {
+//     try {
+//       // Clear stored user session
+//       await AsyncStorage.removeItem('userToken');
       
-      // Redirect to login screen
-      navigation.replace('SignIn');
-    } catch (error) {
-      Alert.alert('Sign Out Error', 'Failed to sign out. Please try again.');
-    }
-  };
+//       // Redirect to login screen
+//       navigation.replace('SignIn');
+//     } catch (error) {
+//       Alert.alert('Sign Out Error', 'Failed to sign out. Please try again.');
+//     }
+//   };
 
   return (
     <View style={styles.container}>
