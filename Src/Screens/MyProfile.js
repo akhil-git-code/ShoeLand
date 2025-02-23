@@ -33,10 +33,10 @@ const MyProfile = ({navigation}) => {
       Alert.alert('Invalid Email', 'Please enter a valid email address.');
       return;
     }
-    if (password.length < 6|| !password.includes()) {
+    if (password.length < 6 || !/[A-Za-z0-9]/.test(password)) {
       Alert.alert(
         'Weak Password',
-        'Password must be at least 6 characters long.',
+        'Password must be at least 6 characters long and contain letters or numbers.',
       );
       return;
     }
@@ -112,6 +112,7 @@ const MyProfile = ({navigation}) => {
           setValue={setPassword}
           disabled={!isEditable} // If isEditable is false, input will be disabled
         />
+        
       </View>
 
       <Button
@@ -120,9 +121,9 @@ const MyProfile = ({navigation}) => {
       />
 
       {/* Sign Out Button */}
-      <TouchableOpacity onPress={handleSignOut} style={styles.signOutButton}>
+      {/* <TouchableOpacity onPress={handleSignOut} style={styles.signOutButton}>
         <Text style={styles.signOutText}>Sign Out</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
