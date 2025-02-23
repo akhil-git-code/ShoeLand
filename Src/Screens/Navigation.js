@@ -8,6 +8,7 @@ import SignIn from './SignIn'; // Your Login component
 import ForgotPassword from './ForgotPassword';
 // bottom tabs
 import BottomTabs from '../navigation/BottomTabs';
+//other screens
 import HomePage from './HomePage';
 import FullProductScreen from './FullProductScreen';
 import MyProfile from './MyProfile';

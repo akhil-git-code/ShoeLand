@@ -35,7 +35,7 @@ const SideMenu = ({navigation}) => {
           <Icon name="person-outline" size={20} color="#fff" />
           <Text style={styles.menuText}>Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('HomePage')}>
+        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('MainApp')}>
           <Icon name="home-outline" size={20} color="#fff" />
           <Text style={styles.menuText}>Home Page</Text>
         </TouchableOpacity>

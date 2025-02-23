@@ -12,11 +12,12 @@ export const ProductContext = createContext();
 export default function App() {
   const [products, setProducts] = useState(1);
   return (
-    <ProductContext.Provider value={{ products, setProducts }}>
+    <ProductContext.Provider value={{ products, setProducts }}> 
       <Navigation />
     </ProductContext.Provider>
 
     // <MyProfile/>
     // <AddToCart/>
+
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import BottomTabs from './BottomTabs';  // Import your BottomTabs component
+import BottomTabs from './BottomTabs'; 
 
 const Stack = createStackNavigator();
 
@@ -8,9 +8,9 @@ const AppNavigator = () => (
   <Stack.Navigator>
     {/* MainTabs (Bottom Tabs) is the initial screen */}
     <Stack.Screen 
-      name="MainTabs" 
+      name="MainApp" 
       component={BottomTabs} 
-      options={{ headerShown: false }}  // Hide the header for bottom tabs screen
+      options={{ headerShown: false }}
     />
   </Stack.Navigator>
 );
