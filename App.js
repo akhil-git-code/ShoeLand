@@ -6,18 +6,19 @@ import MyProfile from './Src/Screens/MyProfile';
 import AddToCart from './Src/Screens/AddToCart';
 import FullProductScreen from './Src/Screens/FullProductScreen';
 import ProductSmallScreen from './Src/Screens/ProductSmallScreen';
+import TestScreen from './Src/Screens/TestScreen';
+import Notifications from './Src/Screens/Notifications';
+import FavoriteScreen from './Src/Screens/FavouriteScreen';
 
-export const ProductContext = createContext();
+// export const ProductContext = createContext(); // for context api
 
 export default function App() {
-  const [products, setProducts] = useState(1);
+  // const [products, setProducts] = useState(0); // for context api
   return (
-    <ProductContext.Provider value={{ products, setProducts }}> 
-      <Navigation />
-    </ProductContext.Provider>
+    // <ProductContext.Provider value={{ products, setProducts }}> // for context api
+       <Navigation/>
+  //  </ProductContext.Provider>// for context api
 
-    // <MyProfile/>
-    // <AddToCart/>
 
   );
 }

@@ -124,90 +124,27 @@
 // //       text: 'Delete',
 // //       onPress: () => console.log('Delete Pressed'),
 // //       style: 'destructive', // For iOS, marks it as a destructive action
-// //     },
+// //     },x
 // //   ]);
 // // };
 
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
 
-const RegisterScreen = ({ navigation }) => {
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [userPassword, setUserPassword] = useState('');
-
-  const handleRegistration = async () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!userName || !userEmail || !userPassword) {
-      Alert.alert('Error', 'All fields are required.');
-      return;
-    }
-
-    if (!emailRegex.test(userEmail)) {
-      Alert.alert('Error', 'Invalid email format.');
-      return;
-    }
-
-    if (userPassword.length < 6) {
-      Alert.alert('Error', 'Password must be at least 6 characters.');
-      return;
-    }
-
-    try {
-      Alert.alert(
-        'Success',
-        'You have registered successfully!',
-        [
-          {
-            text: 'OK',
-            onPress: () => navigation.navigate('Login'),
-          },
-        ],
-      );
-    } catch (error) {
-      Alert.alert('Error', error.message);
-    }
-  };
-
+const TestScreen = () => {
+  const greeting="Hello and Welcome";
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={userName}
-        onChangeText={setUserName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={userEmail}
-        onChangeText={setUserEmail}
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={userPassword}
-        onChangeText={setUserPassword}
-        secureTextEntry
-      />
-      <Button title="Register" onPress={handleRegistration} />
+    <View>
+      <Text style={styles.text}> This is Test Screen</Text>
+      <Text> {greeting}</Text>
     </View>
-  );
-};
+  )
+}
+
+export default TestScreen
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
-  input: {
-    borderWidth: 1,
-    padding: 10,
-    marginBottom: 15,
-    borderRadius: 5,
-    borderColor: '#ccc',
-  },
-});
-
-export default RegisterScreen;
+  text:{
+    fontSize:30,
+  }
+})

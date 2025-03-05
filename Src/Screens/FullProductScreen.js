@@ -15,7 +15,7 @@ const {width, height} = Dimensions.get('window');
 const SizeSelectorScreen = ({route, navigation}) => {
   const [selectedSize, setSelectedSize] = useState(41.5);
   const [selectedColor, setSelectedColor] = useState('blue');
-  const {setProducts, products} = useContext(ProductContext);
+  // const {setProducts, products} = useContext(ProductContext); // for context api
 
   const {shoe} = route.params;
   const sizes = [38.5, 40.5, 41.5, 42.5];
@@ -30,7 +30,7 @@ const SizeSelectorScreen = ({route, navigation}) => {
           onPress={() => navigation.goBack()}>
           <Icon name="arrow-back" size={40} color="#000" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}>
+        <TouchableOpacity style={styles.iconButton}onPress={() => navigation.navigate('FavouriteScreen')}>
           <MaterialIcons name="favorite" size={40} color="#000" />
         </TouchableOpacity>
       </View>
@@ -99,8 +99,9 @@ const SizeSelectorScreen = ({route, navigation}) => {
 
       {/* Add to Cart Button */}
       <TouchableOpacity
-        style={styles.addToCartButton}
-        onPress={() => setProducts(products + 1)}>
+        style={styles.addToCartButton}>
+        {/* // onPress={() => setProducts(products + 1)}> */} 
+        {/* for context api */}
         <Text style={styles.addToCartText}>Add to cart</Text>
       </TouchableOpacity>
     </View>

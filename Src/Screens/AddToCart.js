@@ -10,7 +10,7 @@ import {
 import {ProductContext} from '../../App';
 
 const AddToCart = ({navigation}) => {
-  const {products} = useContext(ProductContext);
+  // const {products} = useContext(ProductContext); // for context api
   const cartItems = []; // Empty for now, can be populated later
 
   const renderEmptyCart = () => (
@@ -48,16 +48,18 @@ const AddToCart = ({navigation}) => {
       {/* Summary and Checkout */}
       <View style={styles.summaryContainer}>
         <View style={styles.summaryRow}>
-          <Text style={styles.summaryText}>Subtotal</Text>
-          <Text style={styles.summaryText}>$0.00</Text>
+          <Text style={styles.summaryText}>Added Items</Text>
+          {/* <Text style={styles.summaryText1}>{products}</Text> */} 
+           {/* for context api */}
+          <Text style={styles.summaryText1}>0</Text>
         </View>
-        <View style={styles.summaryRow}>
+        {/* <View style={styles.summaryRow}>
           <Text style={styles.summaryText}>Shipping</Text>
           <Text style={styles.summaryText}>$0.00</Text>
-        </View>
+        </View> */}
         <View style={styles.summaryRow}>
           <Text style={[styles.summaryText, styles.totalText]}>Total Cost</Text>
-          <Text style={[styles.summaryText, styles.totalText]}>{products}</Text>
+          <Text style={[styles.summaryText, styles.totalText]}>$0.00</Text>
         </View>
         <TouchableOpacity style={styles.checkoutButton}>
           <Text style={styles.checkoutButtonText}>Checkout</Text>
@@ -117,6 +119,11 @@ const styles = StyleSheet.create({
   summaryText: {
     fontSize: 16,
     color: '#000',
+  },
+  summaryText1:{
+    fontSize: 18,
+    color: '#000',
+    fontWeight: 'bold',
   },
   totalText: {
     fontWeight: 'bold',
