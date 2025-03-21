@@ -128,8 +128,6 @@
 // //   ]);
 // // };
 
-
-
 import React, {useEffect, useState} from 'react';
 import {
   View,
@@ -144,19 +142,30 @@ const TestScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   axios
+  //     .get('https://jsonplaceholder.typicode.com/posts')
+  //     .then(response => {
+  //       setData(response.data.slice(0, 10)); // Fetch first 10 posts
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //       setLoading(false);
+  //     });
+  // }, []);
   useEffect(() => {
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => {
-        setData(response.data.slice(0, 10)); // Fetch first 10 posts
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(json => {
+        setData(json);
         setLoading(false);
       })
       .catch(error => {
-        console.error(error);
+        console.error('Fetch error:', error);
         setLoading(false);
       });
   }, []);
-
   return (
     <View style={styles.container}>
       {loading ? (
@@ -185,9 +194,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     borderRadius: 5,
   },
-  title: 
-  {fontWeight: 'bold', 
-    fontSize: 16},
+  title: {fontWeight: 'bold', fontSize: 16},
 });
 
 export default TestScreen;
