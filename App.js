@@ -21,8 +21,10 @@ export default function App() {
       //  <Navigation/>
   //  </ProductContext.Provider>// for context api
 
-<Provider store={mystore}>
-  <Navigation/>
-</Provider>
+// <Provider store={mystore}>
+//   <Navigation/>
+// </Provider>
+
+<TestScreen/>
   );
 }
