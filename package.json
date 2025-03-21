@@ -1,5 +1,5 @@
 {
-  "name": "ShoeLand",
+  "name": "shoeland",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -50,5 +50,19 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "description": "This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhil-git-code/ShoeLand.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/akhil-git-code/ShoeLand/issues"
+  },
+  "homepage": "https://github.com/akhil-git-code/ShoeLand#readme"
 }
