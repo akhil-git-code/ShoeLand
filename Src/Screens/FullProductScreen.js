@@ -9,12 +9,19 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { ProductContext } from '../../App';
+import {ProductContext} from '../../App';
+import {useDispatch} from 'react-redux';
+import {addItemToCart} from '../redux/action/Actions';
 const {width, height} = Dimensions.get('window');
 
 const SizeSelectorScreen = ({route, navigation}) => {
   const [selectedSize, setSelectedSize] = useState(41.5);
   const [selectedColor, setSelectedColor] = useState('blue');
+  // Redux Hook
+  const dispatch = useDispatch();
+  const addItem = item => {
+    dispatch(addItemToCart(item));
+  };
   // const {setProducts, products} = useContext(ProductContext); // for context api
 
   const {shoe} = route.params;
@@ -30,7 +37,9 @@ const SizeSelectorScreen = ({route, navigation}) => {
           onPress={() => navigation.goBack()}>
           <Icon name="arrow-back" size={40} color="#000" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}onPress={() => navigation.navigate('FavouriteScreen')}>
+        <TouchableOpacity
+          style={styles.iconButton}
+          onPress={() => navigation.navigate('FavouriteScreen')}>
           <MaterialIcons name="favorite" size={40} color="#000" />
         </TouchableOpacity>
       </View>
@@ -98,10 +107,10 @@ const SizeSelectorScreen = ({route, navigation}) => {
       </View>
 
       {/* Add to Cart Button */}
-      <TouchableOpacity
-        style={styles.addToCartButton}>
-        {/* // onPress={() => setProducts(products + 1)}> */} 
+      <TouchableOpacity style={styles.addToCartButton}>
+        {/* // onPress={() => setProducts(products + 1)}> */}
         {/* for context api */}
+        onPress={() => {addItem(item);}}
         <Text style={styles.addToCartText}>Add to cart</Text>
       </TouchableOpacity>
     </View>

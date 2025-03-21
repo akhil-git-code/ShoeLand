@@ -8,10 +8,14 @@ import {
   Image,
 } from 'react-native';
 import {ProductContext} from '../../App';
+import {useSelector} from 'react-redux';
 
 const AddToCart = ({navigation}) => {
   // const {products} = useContext(ProductContext); // for context api
   const cartItems = []; // Empty for now, can be populated later
+
+  //Redux
+  const items = useSelector(state => state);
 
   const renderEmptyCart = () => (
     <View style={styles.emptyCartContainer}>
@@ -49,14 +53,11 @@ const AddToCart = ({navigation}) => {
       <View style={styles.summaryContainer}>
         <View style={styles.summaryRow}>
           <Text style={styles.summaryText}>Added Items</Text>
-          {/* <Text style={styles.summaryText1}>{products}</Text> */} 
-           {/* for context api */}
+          {/* <Text style={styles.summaryText1}>{products}</Text> */}
+          {/* for context api */}
           <Text style={styles.summaryText1}>0</Text>
         </View>
-        {/* <View style={styles.summaryRow}>
-          <Text style={styles.summaryText}>Shipping</Text>
-          <Text style={styles.summaryText}>$0.00</Text>
-        </View> */}
+        
         <View style={styles.summaryRow}>
           <Text style={[styles.summaryText, styles.totalText]}>Total Cost</Text>
           <Text style={[styles.summaryText, styles.totalText]}>$0.00</Text>
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000',
   },
-  summaryText1:{
+  summaryText1: {
     fontSize: 18,
     color: '#000',
     fontWeight: 'bold',

@@ -9,6 +9,8 @@ import ProductSmallScreen from './Src/Screens/ProductSmallScreen';
 import TestScreen from './Src/Screens/TestScreen';
 import Notifications from './Src/Screens/Notifications';
 import FavoriteScreen from './Src/Screens/FavouriteScreen';
+import { mystore } from './Src/redux/store/Store';
+import {Provider} from 'react-redux'; 
 
 // export const ProductContext = createContext(); // for context api
 
@@ -16,9 +18,11 @@ export default function App() {
   // const [products, setProducts] = useState(0); // for context api
   return (
     // <ProductContext.Provider value={{ products, setProducts }}> // for context api
-       <Navigation/>
+      //  <Navigation/>
   //  </ProductContext.Provider>// for context api
 
-
+<Provider store={mystore}>
+  <Navigation/>
+</Provider>
   );
 }
