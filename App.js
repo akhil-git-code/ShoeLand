@@ -11,6 +11,8 @@ import Notifications from './Src/Screens/Notifications';
 import FavoriteScreen from './Src/Screens/FavouriteScreen';
 import { mystore } from './Src/redux/store/Store';
 import {Provider} from 'react-redux'; 
+import TestSceeenAPI from './Src/Screens/TestSceeenAPI';
+import ExtraScreenTestingCode from './Src/Screens/ExtraScreenTestingCode';
 
 // export const ProductContext = createContext(); // for context api
 
@@ -24,8 +26,10 @@ export default function App() {
 // {/* <Provider store={mystore}>
 //   <Navigation/>
 // </Provider> */}
-<TestScreen/>
-
 //<TestScreen/>
+//<TestSceeenAPI/>
+//<TestScreen/>
+<ExtraScreenTestingCode/>
+
   );
 }
