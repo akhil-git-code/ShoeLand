@@ -76,10 +76,15 @@
 // });
 
 import {
+  View,
+  KeyboardAvoidingView,
+  TextInput,
   StyleSheet,
   Text,
-  View,
-  TextInput,
+  Platform,
+  TouchableWithoutFeedback,
+  Button,
+  Keyboard,
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -126,43 +131,51 @@ const ExtraScreenTestingCode = () => {
   };
 
   return (
-    <View style={{marginTop: 100, alignItems: 'center'}}>
-      <Text style={{fontSize: 40}}>AsyncStorage with React Native</Text>
-      {/* Show saved email */}
-      {savedEmail ? (
-        <Text style={{fontSize: 18, marginVertical: 10}}>
-          Saved Email: {savedEmail}
-        </Text>
-      ) : null}
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your name"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Enter password"
-        value={password}
-        secureTextEntry
-        onChangeText={setPassword}
-      />
-      <TouchableOpacity style={styles.firstButtonWrapper}>
-        <Text style={{fontSize: 18, textAlign: 'center'}} onPress={setData}>
-          Set Data
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.secondButtonWrapper}>
-        <Text style={{fontSize: 18, textAlign: 'center'}} onPress={getData}>
-          Get Data
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.thirdButtonWrapper}>
-        <Text style={{fontSize: 18, textAlign: 'center'}} onPress={removeData}>
-          Remove Data
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={{marginTop: 100, alignItems: 'center'}}>
+          <Text style={{fontSize: 40}}>AsyncStorage with React Native</Text>
+          {/* Show saved email */}
+          {savedEmail ? (
+            <Text style={{fontSize: 18, marginVertical: 10}}>
+              Saved Email: {savedEmail}
+            </Text>
+          ) : null}
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your name"
+            value={email}
+            onChangeText={setEmail}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Enter password"
+            value={password}
+            secureTextEntry
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity style={styles.firstButtonWrapper}>
+            <Text style={{fontSize: 18, textAlign: 'center'}} onPress={setData}>
+              Set Data
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.secondButtonWrapper}>
+            <Text style={{fontSize: 18, textAlign: 'center'}} onPress={getData}>
+              Get Data
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.thirdButtonWrapper}>
+            <Text
+              style={{fontSize: 18, textAlign: 'center'}}
+              onPress={removeData}>
+              Remove Data
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -176,6 +189,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '80%',
     alignSelf: 'center',
+    marginVertical: 100,
   },
   firstButtonWrapper: {
     width: 300,

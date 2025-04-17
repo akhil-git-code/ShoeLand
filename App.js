@@ -13,6 +13,7 @@ import { mystore } from './Src/redux/store/Store';
 import {Provider} from 'react-redux'; 
 import TestSceeenAPI from './Src/Screens/TestSceeenAPI';
 import ExtraScreenTestingCode from './Src/Screens/ExtraScreenTestingCode';
+import Login from './Src/Screens/Login';
 
 // export const ProductContext = createContext(); // for context api
 
@@ -29,7 +30,8 @@ export default function App() {
 //<TestScreen/>
 //<TestSceeenAPI/>
 //<TestScreen/>
-<ExtraScreenTestingCode/>
+//<ExtraScreenTestingCode/>
+<Login/>
 
   );
 }
