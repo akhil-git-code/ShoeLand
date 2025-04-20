@@ -14,6 +14,8 @@ import {Provider} from 'react-redux';
 import TestSceeenAPI from './Src/Screens/TestSceeenAPI';
 import ExtraScreenTestingCode from './Src/Screens/ExtraScreenTestingCode';
 import Login from './Src/Screens/Login';
+import SignUp from './Src/Screens/SignUp';
+import Searchbar from './Src/Screens/Searchbar';
 
 // export const ProductContext = createContext(); // for context api
 
@@ -29,9 +31,10 @@ export default function App() {
 // </Provider> */}
 //<TestScreen/>
 //<TestSceeenAPI/>
-//<TestScreen/>
+<TestScreen/>
 //<ExtraScreenTestingCode/>
-<Login/>
-
+//<Login/>
+//<Searchbar/>
+//<SignUp/>
   );
 }

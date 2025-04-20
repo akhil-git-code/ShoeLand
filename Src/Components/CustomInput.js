@@ -1,43 +1,63 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {View, TextInput, StyleSheet, TextInputProps, TouchableOpacity} from 'react-native';
 
-export default Custominput = ({ value, setValue, placeholder, secureTextEntry, maxLength,keyboardType, disabled}) => {
-    
-  
+interface CustomInputProps {
+  value: string;
+  setValue: (text: string) => void;
+  placeholder?: string;
+  secureTextEntry?: boolean;
+  maxLength?: number;
+  keyboardType?: TextInputProps['keyboardType'];
+  disabled?: boolean;
+  onPress?: () => void;
+}
+
+const CustomInput: React.FC<CustomInputProps> = ({
+  value,
+  setValue,
+  placeholder,
+  secureTextEntry = false,
+  maxLength,
+  keyboardType = 'default',
+  disabled = false,
+  onPress,
+}) => {
   return (
-    <View style={styles.container} >
-      <TextInput 
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={onPress ? 0.7 : 1}
+      style={styles.container}>
+      <TextInput
         value={value}
-        maxLength={maxLength}
         onChangeText={setValue}
-        style={styles.input}
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}
+        maxLength={maxLength}
         keyboardType={keyboardType}
-        placeholderTextColor={'#969696'}
-       disabled={disabled}
+        placeholderTextColor="#969696"
+        editable={!onPress && !disabled}
+        style={styles.input}
+        pointerEvents={onPress ? 'none' : 'auto'}
       />
-    </View>
-  )
-}
+    </TouchableOpacity>
+  );
+};
+
+export default CustomInput;
+
 const styles = StyleSheet.create({
-    container:{
-        backgroundColor: '#F7F7F7',
-        borderWidth:1,
-        borderRadius:8,
-        borderColor:'#F7F7F7',
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        elevation:5,
-        height:52,
-        justifyContent:'center'
-    },
-    input:{
-      color:'#000'
-    }
-})
-
-
-
-
-{/* <Custominput placeholder={'Email-Id'} value={firstname} setValue={(text) => setFname(text)} /> */}
+  container: {
+    backgroundColor: '#F7F7F7',
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#F7F7F7',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    elevation: 5,
+    height: 52,
+    justifyContent: 'center',
+  },
+  input: {
+    color: '#000',
+  },
+});

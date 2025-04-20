@@ -68,23 +68,26 @@
 // });
 
 // export default TestScreen;
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Import axios
 
 const TestScreen = () => {
   const [data, setData] = useState([]);
+
+  // Use axios for API call
   const getAPIData = async () => {
     try {
-      // api call
-      const url = 'https://jsonplaceholder.typicode.com/posts/';
-      let result = await fetch(url);
-      result = await result.json();
-      setData(result);
-      // console.warn(result);
+      // API call with axios
+      const url = 'https://api.first.org/data/v1/countries';
+      let result = await axios.get(url); 
+      // console.log(result.data); 
+      setData(Object.entries(result.data.data)); // here we can convert object to array with Object.entries
     } catch (error) {
-      console.warn('API fetch error:', error.message);
+      console.warn('API fetch error:', error.message); 
     }
   };
+
   useEffect(() => {
     getAPIData();
   }, []);
@@ -92,23 +95,31 @@ const TestScreen = () => {
   return (
     <ScrollView>
       <View>
-        <Text style={{fontSize: 30}}>List with API Call</Text>
-        {data.length
-          ? data.map(item => (
+        <Text style={{ fontSize: 30 }}>List with API Call</Text>
+        {data.length ? (
+          data.map(([code, item]) => (
             <View
-            key={item.id}
-            style={{
-              padding: 20,
-              borderBottomColor: 'black',
-              borderBottomWidth: 1,
-            }}>
-                <Text style={{fontSize: 20}}>Id: {item.id}</Text>
-                <Text style={{fontSize: 20}}>User Id: {item.userId}</Text>
-                <Text style={{fontSize: 10}}>Title: {item.title}</Text>
-                <Text style={{fontSize: 10}}>Body: {item.body}</Text>
-              </View>
-            ))
-          : null}
+              key={code}
+              style={{
+                padding: 20,
+                borderBottomColor: 'black',
+                borderBottomWidth: 1,
+              }}>
+              <Text style={{ fontSize: 20 }}>Country: {item.country}</Text>
+              <Text style={{ fontSize: 20 }}>Region: {item.region}</Text>
+
+              {/* If there's an image (flag) URL, display it */}
+              {item.flag && (
+                <Image
+                  source={{ uri: item.flag }}
+                  style={{ width: 100, height: 60, borderRadius: 5, marginTop: 10 }}
+                />
+              )}
+            </View>
+          ))
+        ) : (
+          <Text>Loading...</Text>
+        )}
       </View>
     </ScrollView>
   );
