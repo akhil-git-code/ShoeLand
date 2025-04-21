@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, TextInput, StyleSheet, TextInputProps, TouchableOpacity} from 'react-native';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TextInputProps,
+  TouchableOpacity,
+} from 'react-native';
 
 interface CustomInputProps {
   value: string;
@@ -10,6 +16,7 @@ interface CustomInputProps {
   keyboardType?: TextInputProps['keyboardType'];
   disabled?: boolean;
   onPress?: () => void;
+  onChangeText: (text: string) => void;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
@@ -21,6 +28,9 @@ const CustomInput: React.FC<CustomInputProps> = ({
   keyboardType = 'default',
   disabled = false,
   onPress,
+  onChangeText,
+  editable,
+  style,
 }) => {
   return (
     <TouchableOpacity
@@ -29,14 +39,15 @@ const CustomInput: React.FC<CustomInputProps> = ({
       style={styles.container}>
       <TextInput
         value={value}
-        onChangeText={setValue}
+        onChangeText={onChangeText}
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}
         maxLength={maxLength}
         keyboardType={keyboardType}
         placeholderTextColor="#969696"
-        editable={!onPress && !disabled}
-        style={styles.input}
+        editable={editable}
+        style={[styles.input, style]}
+        onPressIn={onPress}
         pointerEvents={onPress ? 'none' : 'auto'}
       />
     </TouchableOpacity>

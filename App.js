@@ -31,10 +31,10 @@ export default function App() {
 // </Provider> */}
 //<TestScreen/>
 //<TestSceeenAPI/>
-<TestScreen/>
+//<TestScreen/>
 //<ExtraScreenTestingCode/>
 //<Login/>
-//<Searchbar/>
+<Searchbar/>
 //<SignUp/>
   );
 }
