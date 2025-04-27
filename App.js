@@ -16,6 +16,7 @@ import ExtraScreenTestingCode from './Src/Screens/ExtraScreenTestingCode';
 import Login from './Src/Screens/Login';
 import SignUp from './Src/Screens/SignUp';
 import Searchbar from './Src/Screens/Searchbar';
+import CameraScreen from './Src/Screens/CameraScreen';
 
 // export const ProductContext = createContext(); // for context api
 
@@ -34,7 +35,8 @@ export default function App() {
 //<TestScreen/>
 //<ExtraScreenTestingCode/>
 //<Login/>
-<Searchbar/>
+//<Searchbar/>
 //<SignUp/>
+<CameraScreen/>
   );
 }
