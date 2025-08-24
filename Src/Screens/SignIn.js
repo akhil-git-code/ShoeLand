@@ -7,11 +7,11 @@ import {
   Alert,
   Linking,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import CustomInput from '../Components/CustomInput';
 import Button from '../Components/Button';
 
-const SignIn = ({ navigation }) => {
+const SignIn = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,19 +30,31 @@ const SignIn = ({ navigation }) => {
 
     // Password validation
     if (password.length < 6) {
-      Alert.alert('Weak Password', 'Password must be at least 6 characters long.');
+      Alert.alert(
+        'Weak Password',
+        'Password must be at least 6 characters long.',
+      );
       return;
     }
     if (!/[a-zA-Z]/.test(password)) {
-      Alert.alert('Weak Password', 'Password must include at least one letter.');
+      Alert.alert(
+        'Weak Password',
+        'Password must include at least one letter.',
+      );
       return;
     }
     if (!/\d/.test(password)) {
-      Alert.alert('Weak Password', 'Password must include at least one number.');
+      Alert.alert(
+        'Weak Password',
+        'Password must include at least one number.',
+      );
       return;
     }
     if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      Alert.alert('Weak Password', 'Password must include at least one special character.');
+      Alert.alert(
+        'Weak Password',
+        'Password must include at least one special character.',
+      );
       return;
     }
 

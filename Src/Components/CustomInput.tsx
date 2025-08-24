@@ -16,7 +16,8 @@ interface CustomInputProps {
   keyboardType?: TextInputProps['keyboardType'];
   disabled?: boolean;
   onPress?: () => void;
-  onChangeText: (text: string) => void;
+  editable?: boolean;
+  style?: object;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
@@ -28,8 +29,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
   keyboardType = 'default',
   disabled = false,
   onPress,
-  onChangeText,
-  editable,
+  editable = true,
   style,
 }) => {
   return (
@@ -39,15 +39,14 @@ const CustomInput: React.FC<CustomInputProps> = ({
       style={styles.container}>
       <TextInput
         value={value}
-        onChangeText={onChangeText}
+        onChangeText={setValue}
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}
         maxLength={maxLength}
         keyboardType={keyboardType}
         placeholderTextColor="#969696"
-        editable={editable}
+        editable={!disabled && editable}
         style={[styles.input, style]}
-        onPressIn={onPress}
         pointerEvents={onPress ? 'none' : 'auto'}
       />
     </TouchableOpacity>
